@@ -85,3 +85,11 @@ button:hover {
   border-radius: 20px;
   box-shadow: 25px;
 }
+#sourcelink {
+  color: cornflowerblue;
+}
+#author {
+  color: #caa2f0;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 550;
+}
