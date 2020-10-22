@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="src/styles.css" />
+    <title>WeatherApp☀️</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-3">
+          <h1 id="headnow">
+          <span id="nownumber"> 22</span>
+          <span id="metrics"> <a href= "#"" id="celcius">°C</a><a href="#" id="fahren">°F</a></span>
+        </h1>
+          <br />
+          <img
+            src="https://www.urbanbrush.net/en/wp-content/uploads/edd/2018/09/urbanbrush-20180902081941607898.png"
+            alt="nowimg"
+          />
+        </div>
+
+        <div class="col-3">
+          <form>
+            <input type="search" id="searchcity" placeholder="new city" />
+            <button>my weather</button>
+          </form>
+          <p class="nowcity">MEXICO CITY</p>
+          <div class="card" style="width: 10rem;">
+            <div class="card-body" id="cardtoday">
+              <h5 class="card-title" id="titleweekday">MONDAY</h5>
+              <h6 class="card-subtitle mb-2 text-muted" id="today-date">
+                Sep 28 2020
+              </h6>
+              <p class="card-text">MAX 23°C<br />MIN 13°C<br />RAIN 80%</p>
+              <a href="#" class="card-link">More details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-6"></div>
+        <div class="row 2">
+          <div class="card" style="width: 13rem;">
+            <div class="card-body1">
+              <span>⛈</span>
+              <h5 class="card-tuesday">Tuesday</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Sep 29 2020</h6>
+              <p class="card-text">MAX 20°C<br />MIN 10°C<br />RAIN 75%</p>
+              <a href="#" class="card-link">More details</a>
+            </div>
+          </div>
+          <div class="card" style="width: 13rem;">
+            <div class="card-body2">
+              <span>🌥</span>
+              <h5 class="card-title">Wednesday</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Sep 30 2020</h6>
+              <p class="card-text">MAX 22°C<br />MIN 13°C<br />RAIN 30%</p>
+              <a href="#" class="card-link">More details</a>
+            </div>
+          </div>
+          <div class="card" style="width: 13rem;">
+            <div class="card-body3">
+              <span>🌬</span>
+              <h5 class="card-title">Thursday</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Oct 1 2020</h6>
+              <p class="card-text">MAX 23°C<br />MIN 13°C<br />RAIN 20%</p>
+              <a href="#" class="card-link">More details</a>
+            </div>
+          </div>
+          <div class="card" style="width: 13rem;">
+            <div class="card-body4">
+              <span>☀️</span>
+              <h5 class="card-title">Friday</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Oct 2 2020</h6>
+              <p class="card-text">MAX 25°C<br />MIN 15°C<br />RAIN 10%</p>
+              <a href="#" class="card-link">More details</a>
+            </div>
+          </div>
+          <div class="card" style="width: 13rem;">
+            <div class="card-body5">
+              <span>🌤</span>
+              <h5 class="card-title">Weekend</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Oct 3&4 2020</h6>
+              <p class="card-text">MAX 28°C<br />MIN 20°C<br />RAIN 8%</p>
+              <a href="#" class="card-link">More details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="src/index.js"></script>
+  </body>
+</html>

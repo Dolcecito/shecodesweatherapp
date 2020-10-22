@@ -1,0 +1,85 @@
+body {
+  background-color: #8ec5fc;
+  background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
+}
+#searchcity {
+  background-color: #e0c3fc;
+  opacity: 0.3px;
+  border: none;
+  cursor: text;
+}
+#nownumber {
+  color: #a4a9e4;
+  font-family: monospace;
+  font-size: 100px;
+}
+img {
+  display: block;
+  margin: 0 auto;
+  width: 220px;
+  border-radius: 20px;
+  opacity: 0.5;
+}
+
+.nowcity {
+  color: #a4a9e4;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 20px;
+  margin: 20px;
+}
+.card {
+  color: #a4a9e4;
+  background-color: rgba(159, 204, 250, 0.589);
+  display: block;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  margin: 35px 0px 0px 20px;
+  border-radius: 20px;
+}
+input {
+  margin: 20px;
+  border-radius: 20px;
+  border-color: #a4a9e4;
+}
+.card-link {
+  color: #777fdb;
+  text-decoration-line: underline;
+}
+#celcius,
+#fahren {
+  color: #a4a9e4;
+  font-size: 35px;
+  margin: 0px 0px 0px 15px;
+}
+#celcius:hover {
+  cursor: pointer;
+  text-decoration-line: underline;
+}
+#fahren:hover {
+  cursor: pointer;
+  text-decoration-line: underline;
+}
+button {
+  color: #a4a9e4;
+  font-size: 16px;
+  display: block;
+  position: fixed;
+  background-color: #e0c3fc;
+  opacity: 0.7px;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+  box-shadow: 25px;
+}
+button:hover {
+  color: #e0c3fc;
+  font-size: 16px;
+  display: block;
+  position: fixed;
+  background-color: #a4a9e4;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+  box-shadow: 25px;
+}
