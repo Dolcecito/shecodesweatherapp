@@ -46,20 +46,17 @@ input {
   color: #777fdb;
   text-decoration-line: underline;
 }
-#celcius,
-#fahren {
+.metrics.active {
   color: #a4a9e4;
   font-size: 35px;
   margin: 0px 0px 0px 15px;
 }
-#celcius:hover {
+.metrics.active:hover {
+  color: #777fdb;
   cursor: pointer;
   text-decoration-line: underline;
 }
-#fahren:hover {
-  cursor: pointer;
-  text-decoration-line: underline;
-}
+
 button {
   color: #a4a9e4;
   font-size: 16px;

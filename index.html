@@ -9,6 +9,7 @@
       integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
       crossorigin="anonymous"
     />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/styles.css" />
     <title>WeatherApp☀️</title>
   </head>
@@ -18,13 +19,13 @@
       <div class="row">
         <div class="col-3">
           <h1 id="headnow">
-          <span id="nownumber"> 22</span>
-          <span id="metrics"> <a href= "#" id="celcius">°C</a><a href="#" id="fahren">°F</a></span>
+          <span id="nownumber"></span>
+          <span class="metrics"> <a href= "#" id="celsius" class="active">°C</a><a href="#" id="fahren">°F</a></span>
         </h1>
           <br />
           <img
             src="https://www.urbanbrush.net/en/wp-content/uploads/edd/2018/09/urbanbrush-20180902081941607898.png"
-            alt="nowimg"
+            alt="nowimg" id="nowIcon"
           />
         </div>
 
@@ -33,14 +34,13 @@
             <input type="search" id="searchcity" placeholder="new city" />
             <button>my weather</button>
           </form>
-          <p class="nowcity">MEXICO CITY</p>
+          <p class="now"></p><span id="nowCity"></span>
           <div class="card" style="width: 10rem;">
             <div class="card-body" id="cardtoday">
-              <h5 class="card-title" id="titleweekday">MONDAY</h5>
+              <h5 class="card-title" id="titleweekday"></h5>
               <h6 class="card-subtitle mb-2 text-muted" id="today-date">
-                Sep 28 2020
               </h6>
-              <p class="card-text">MAX 23°C<br />MIN 13°C<br />RAIN 80%</p>
+              <p class="card-text">MAX<span id="nowMax"></span>°C<br />MIN<span id="nowMin"></span>°C<br /><span id="nowDescrip"></span></p>
               <a href="#" class="card-link">More details</a>
             </div>
           </div>
@@ -52,7 +52,7 @@
               <span>⛈</span>
               <h5 class="card-tuesday">Tuesday</h5>
               <h6 class="card-subtitle mb-2 text-muted">Sep 29 2020</h6>
-              <p class="card-text">MAX 20°C<br />MIN 10°C<br />RAIN 75%</p>
+              <p class="card-text">MAX 20°C<br />MIN 10°C<br /> <span>RAIN</span></p>
               <a href="#" class="card-link">More details</a>
             </div>
           </div>

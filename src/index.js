@@ -9,8 +9,6 @@ let weekDays = [
   "Friday",
   "Saturday",
 ];
-let showWeekday = document.querySelector("#titleweekday");
-let todayWeekDay = weekDays[now.getDay()];
 let hours = now.getHours();
 if (hours < 10) {
   hours = `0${hours}`;
@@ -20,32 +18,70 @@ if (minutes < 10) {
   minutes = `0${minutes}`;
 }
 let todayHour = `${hours}:${minutes}`;
+let showWeekday = document.querySelector("#titleweekday");
+let todayWeekDay = weekDays[now.getDay()];
 showWeekday.innerHTML = `${todayWeekDay}, ${todayHour}`;
-//LIVE WEATHER
-function defaultCity(city) {
+
+function showTemp(response) {
+  console.log = (response);
+  let nowTemp = document.querySelector("#nownumber");
+  let nowCity = document.querySelector("#nowCity");
+  let nowMax = document.querySelector ("#nowMax");
+  let nowMin = document.querySelector ("#nowMin");
+  let nowDate = document.querySelector ("#today-date");
+  let nowDescrip = document.querySelector ("#nowDescrip");
+  let nowIcon = document.querySelector ("#nowIcon");
+  nowTemp.innerHTML = Math.round(response.data.main.temp);
+  nowCity.innerHTML = response.data.name;
+  nowMax.innerHTML = response.data.weather[0].max;
+  nowMin.innerHTML = response.data.weather[0].min;
+  nowDate.innerHTML = (response.data.dt*1000);  
+  nowDescrip.innerHTML = response.data.weather[0].description;
+  nowIcon.setAttribute ("src",  `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);    
+}
+
+function generate(city) {
   let apiKey = "78f8e0a39c4d8f38e86511359618c7bb";
   let apiURL =
-    "https://api.openweathermap.org/data/2.5/weather?q=${cityIn}&appid={apiKey}&units=metric";
-  axios.get(`${apiURL}&appid${apiKey}`).then(showTemp);
+    `https://api.openweathermap.org/data/2.5/weather?q=${cityIn}&appid=${apiKey}&units=metric`;
+  axios.get(apiURL).then(showTemp);
+  apiURL = `https://api.openweathermap.org/data/2.5/forecast?q=${cityIn}&appid=${apiKey}&units=metric`;
+  axios.get(apiURL).then(showForecast);
 }
 function searchCity(event) {
   event.preventDefault();
-  let cityIn = document.querySelector("#searchcity").value;
-  defaultCity(cityIn);
+  let cityIn = document.querySelector("#searchcity");
+  generate(cityIn.value);
 }
 
-function showTemp(response) {
-  console.log(response.data);
-  document.querySelector(".nowcity").innerHTML = response.data.name;
-  document.querySelector("#nownumber").innerHTML = Math.round(
-    response.data.main.temp
-  );
-  document.querySelector("#description").innerHTML =
-    response.data.weather[0].description;
+function showFahren (event){
+  event.preventDefault ();
+  let nowTemp = document.querySelector("#nownumber");
+  celsius.classList.remove("active");
+  fahren.classList.add("active");
+  nowTemp.innerHTML = Math.round((celsiusTemp* 9) / 5 + 32);
 }
+function showCelsius (event){
+  event.preventDefault();
+  celsius.classList.add ("active");
+ let nowTemp = document.querySelector("#nownumber");
+nowTemp.innerHTML = Math.round(celsiusTemp);
+}
+let celsiusTemo = null;
 
-let searchform = document.querySelector("form");
-searchform.addEventListener("submit", searchCity);
+let searchForm = document.querySelector("form");
+searchForm.addEventListener("submit", searchCity);
+
+let showNowTempF = document.querySelector("#fahren");
+showNowTempF.addEventListener("click", showFahren);
+
+let showNowTempC = document.querySelector("#celsius");
+showNowTempC.addEventListener("click", showCelsius);
+
+generate("Mexico City");
+
 
 function showPosition(position) {
   let yourposition = document.querySelector(".nowcity");
@@ -58,19 +94,4 @@ function getCurrentPosition(event) {
 }
 let button = document.querySelector("button");
 button.addEventListener("click", getCurrentPosition);
-//F link
-function mathTemp(event) {
-  event.preventDefault();
-  let nowTemperature = document.querySelector("#nownumber");
-  let temp = nowTemperature.innerHTML;
-  let convert = Math.round((temp * 9) / 5 + 32);
-  nowTemperature.innerHTML = `${convert}`;
-}
 
-let nowTempF = document.querySelector("#fahren");
-nowTempF.addEventListener("click", mathTemp);
-
-let nowTempC = document.querySelector("#celcius");
-nowTempC.addEventListener("click", showTemp);
-
-defaultCity(`Mexico City`);
