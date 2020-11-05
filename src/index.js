@@ -33,22 +33,19 @@ function showTemp(response) {
   let nowIcon = document.querySelector ("#nowIcon");
   nowTemp.innerHTML = Math.round(response.data.main.temp);
   nowCity.innerHTML = response.data.name;
-  nowMax.innerHTML = response.data.weather[0].max;
-  nowMin.innerHTML = response.data.weather[0].min;
-  nowDate.innerHTML = (response.data.dt*1000);  
+  nowMax.innerHTML = response.data.main.temp_max;
+  nowMin.innerHTML = response.data.main.temp_min;
+  nowDate.innerHTML = "TODAY";  
   nowDescrip.innerHTML = response.data.weather[0].description;
-  nowIcon.setAttribute ("src",  `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  );
-  iconElement.setAttribute("alt", response.data.weather[0].description);    
+  nowIcon.setAttribute = ("src",  `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );    
 }
 
 function generate(city) {
   let apiKey = "78f8e0a39c4d8f38e86511359618c7bb";
   let apiURL =
-    `https://api.openweathermap.org/data/2.5/weather?q=${cityIn}&appid=${apiKey}&units=metric`;
+    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiURL).then(showTemp);
-  apiURL = `https://api.openweathermap.org/data/2.5/forecast?q=${cityIn}&appid=${apiKey}&units=metric`;
-  axios.get(apiURL).then(showForecast);
 }
 function searchCity(event) {
   event.preventDefault();
@@ -86,7 +83,6 @@ generate("Mexico City");
 function showPosition(position) {
   let yourposition = document.querySelector(".nowcity");
   yourposition.innerHTML = `In lat ${position.coords.latitude} & lon ${position.coords.longitude}`;
-}
 
 function getCurrentPosition(event) {
   event.preventDefault();
@@ -94,4 +90,4 @@ function getCurrentPosition(event) {
 }
 let button = document.querySelector("button");
 button.addEventListener("click", getCurrentPosition);
-
+}

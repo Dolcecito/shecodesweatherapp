@@ -13,19 +13,18 @@ body {
   font-family: monospace;
   font-size: 100px;
 }
-img {
+#nowIcon {
   display: block;
   margin: 0 auto;
-  width: 220px;
+  width: 200px;
   border-radius: 20px;
-  opacity: 0.5;
 }
 
-.nowcity {
+#nowCity {
   color: #a4a9e4;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
-  font-size: 20px;
+  font-size: 35px;
   margin: 20px;
 }
 .card {
@@ -46,13 +45,17 @@ input {
   color: #777fdb;
   text-decoration-line: underline;
 }
+#celsius,
+#fahren {
+  color: #ad9bd2;
+}
 .metrics.active {
-  color: #a4a9e4;
+  color: #ad9bd2;
   font-size: 35px;
   margin: 0px 0px 0px 15px;
 }
 .metrics.active:hover {
-  color: #777fdb;
+  color: #9877db;
   cursor: pointer;
   text-decoration-line: underline;
 }
