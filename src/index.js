@@ -1,4 +1,3 @@
-//Add Weekday and Hour
 let now = new Date();
 let weekDays = [
   "Sunday",
@@ -23,29 +22,45 @@ let todayWeekDay = weekDays[now.getDay()];
 showWeekday.innerHTML = `${todayWeekDay}, ${todayHour}`;
 
 function showTemp(response) {
-  console.log = (response);
   let nowTemp = document.querySelector("#nownumber");
   let nowCity = document.querySelector("#nowCity");
-  let nowMax = document.querySelector ("#nowMax");
-  let nowMin = document.querySelector ("#nowMin");
-  let nowDate = document.querySelector ("#today-date");
-  let nowDescrip = document.querySelector ("#nowDescrip");
-  let nowIcon = document.querySelector ("#nowIcon");
-  nowTemp.innerHTML = Math.round(response.data.main.temp);
+  let nowMax = document.querySelector("#nowMax");
+  let nowMin = document.querySelector("#nowMin");
+  let nowDate = document.querySelector("#today-date");
+  let nowDescrip = document.querySelector("#nowDescrip");
+  let nowIcon = document.querySelector("#nowIcon");
+  celsiusTemp = response.data.main.temp;
+  nowTemp.innerHTML = Math.round(celsiusTemp);
   nowCity.innerHTML = response.data.name;
   nowMax.innerHTML = response.data.main.temp_max;
   nowMin.innerHTML = response.data.main.temp_min;
-  nowDate.innerHTML = "TODAY";  
+  nowDate.innerHTML = "TODAY";
   nowDescrip.innerHTML = response.data.weather[0].description;
-  nowIcon.setAttribute = ("src",  `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  );    
+  nowIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+}
+function showForecast(response) {
+  let forecastSection = document.querySelector("#forecast");
+  let forcastSource = response.data.list[0];
+  forecastSection.innerHTML = `
+          <div class="card" style="width: 8rem;">
+            <div class="card-body">
+              <img src= `http://openweathermap.org/img/wn/${forecastSource.weather[0].icon}@2x.png`/>
+              <h5 class="card-tuesday" id="descrip1">${forecastSource.weather[0].description}</h5>
+              <h6 class="card-subtitle mb-2 text-muted" id="day1">TOMORROW</h6>
+            </div>
+          </div>`;
 }
 
 function generate(city) {
   let apiKey = "78f8e0a39c4d8f38e86511359618c7bb";
-  let apiURL =
-    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiURL).then(showTemp);
+
+  apiURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiURL).then(showForecast);
 }
 function searchCity(event) {
   event.preventDefault();
@@ -53,20 +68,20 @@ function searchCity(event) {
   generate(cityIn.value);
 }
 
-function showFahren (event){
-  event.preventDefault ();
+function showFahren(event) {
+  event.preventDefault();
   let nowTemp = document.querySelector("#nownumber");
   celsius.classList.remove("active");
   fahren.classList.add("active");
-  nowTemp.innerHTML = Math.round((celsiusTemp* 9) / 5 + 32);
+  nowTemp.innerHTML = Math.round((celsiusTemp * 9) / 5 + 32);
 }
-function showCelsius (event){
+function showCelsius(event) {
   event.preventDefault();
-  celsius.classList.add ("active");
- let nowTemp = document.querySelector("#nownumber");
-nowTemp.innerHTML = Math.round(celsiusTemp);
+  let nowTemp = document.querySelector("#nownumber");
+  celsius.classList.add("active");
+  fahren.classList.remove("active");
+  nowTemp.innerHTML = Math.round(celsiusTemp);
 }
-let celsiusTemo = null;
 
 let searchForm = document.querySelector("form");
 searchForm.addEventListener("submit", searchCity);
@@ -79,15 +94,14 @@ showNowTempC.addEventListener("click", showCelsius);
 
 generate("Mexico City");
 
-
 function showPosition(position) {
   let yourposition = document.querySelector(".nowcity");
   yourposition.innerHTML = `In lat ${position.coords.latitude} & lon ${position.coords.longitude}`;
 
-function getCurrentPosition(event) {
-  event.preventDefault();
-  navigator.geolocation.getCurrentPosition(showPosition);
-}
-let button = document.querySelector("button");
-button.addEventListener("click", getCurrentPosition);
+  function getCurrentPosition(event) {
+    event.preventDefault();
+    navigator.geolocation.getCurrentPosition(showPosition);
+  }
+  let button = document.querySelector("button");
+  button.addEventListener("click", getCurrentPosition);
 }

@@ -16,7 +16,7 @@ body {
 #nowIcon {
   display: block;
   margin: 0 auto;
-  width: 200px;
+  width: 100px;
   border-radius: 20px;
 }
 
@@ -26,6 +26,13 @@ body {
     "Lucida Sans", Arial, sans-serif;
   font-size: 35px;
   margin: 20px;
+}
+.forecastIcon {
+  display: block;
+  margin: 0 auto;
+  width: 100px;
+  border-radius: 20px;
+  font-size: 80px;
 }
 .card {
   color: #a4a9e4;
