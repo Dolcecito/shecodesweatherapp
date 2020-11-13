@@ -43,11 +43,11 @@ function showTemp(response) {
 }
 function showForecast(response) {
   let forecastSection = document.querySelector("#forecast");
-  let forcastSource = response.data.list[0];
+  forecastSource = response.data.list[0];
   forecastSection.innerHTML = `
           <div class="card" style="width: 8rem;">
             <div class="card-body">
-              <img src= `http://openweathermap.org/img/wn/${forecastSource.weather[0].icon}@2x.png`/>
+              <img src="http://openweathermap.org/img/wn/${forecastSource.weather[0].icon}@2x.png"/>
               <h5 class="card-tuesday" id="descrip1">${forecastSource.weather[0].description}</h5>
               <h6 class="card-subtitle mb-2 text-muted" id="day1">TOMORROW</h6>
             </div>
